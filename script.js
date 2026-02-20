@@ -4,6 +4,7 @@ const startBtnElement = document.getElementById(`start-btn`);
 const screenStartElement = document.getElementById(`start-screen`);
 const screenQuestions = document.getElementById(`quiz-screen`);
 const questionTextEl = document.getElementById(`question-text`);
+const answersContainer = document.getElementById(`answers-container`);
 
 let currentQuestion;
 let stateQuestion;
@@ -22,3 +23,16 @@ startBtnElement.addEventListener("click", () => {
 
    questionTextEl.innerHTML = `${questions[0].question}`;
 });
+
+function renderingBtnAnswers() {
+   currentQuestion = questions[0];
+
+   // Create btns of the current question
+   currentQuestion.answers.forEach((answer) => {
+      let newBtnAnswer = document.createElement(`button`);
+      newBtnAnswer.textContent = answer.text;
+      answersContainer.appendChild(newBtnAnswer);
+   });
+}
+
+renderingBtnAnswers();
